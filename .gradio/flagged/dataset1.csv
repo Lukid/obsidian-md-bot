@@ -1,0 +1,12 @@
+URL del sito web,Percorso del vault Obsidian,Includi metadati YAML,LLM Provider,Stato,timestamp
+,/Users/lucabaroncini/Documents/Appunti_Luca,true,openai,,2025-03-20 15:43:30.992273
+https://www.uxtigers.com/post/vibe-coding-vibe-design,/Users/lucabaroncini/Documents/Appunti_Luca,true,openai,"❌ Errore imprevisto: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+",2025-03-20 15:45:34.650085
