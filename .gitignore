@@ -4,3 +4,52 @@ dist/
 *.egg-info/
 .idea
 .env
+
+# IDE and Editor files
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.python-version
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.mypy_cache/
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Local development
+.env
+.env.*
+!.env-example
+!.env-default
+
+# Gradio specific
+.gradio/
+flagged/
