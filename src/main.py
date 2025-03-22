@@ -34,12 +34,6 @@ if not any([OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY]):
 # Initialize LLM clients
 if OPENAI_API_KEY:
     openai.api_key = OPENAI_API_KEY
-if ANTHROPIC_API_KEY:
-    try:
-        anthropic_client = Anthropic()  # La chiave API verrà presa automaticamente dall'ambiente
-    except Exception as e:
-        logger.error(f"Errore nell'inizializzazione del client Anthropic: {str(e)}")
-        anthropic_client = None
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
@@ -163,11 +157,13 @@ Contenuto da riassumere:
     
     elif provider == 'anthropic' and ANTHROPIC_API_KEY:
         try:
-            message = anthropic_client.messages.create(
+            # Inizializza il client qui, quando serve
+            anthropic = Anthropic(api_key=ANTHROPIC_API_KEY)
+            message = anthropic.messages.create(
                 model=os.getenv('ANTHROPIC_MODEL', 'claude-3-opus-20240229'),
                 max_tokens=int(os.getenv('MAX_TOKENS', '2000')),
                 temperature=float(os.getenv('TEMPERATURE', '0.7')),
-                system="Sei un assistente esperto nella creazione di riassunti in italiano. Il tuo compito è analizzare il contenuto fornito e creare un riassunto dettagliato, mantenendo i punti chiave e le informazioni più rilevanti.",
+                system="Sei un assistente esperto nella creazione di riassunti in italiano...",
                 messages=[
                     {
                         "role": "user",
@@ -307,7 +303,8 @@ def main():
             gr.Dropdown(
                 label="LLM Provider",
                 choices=["openai", "anthropic", "gemini"],
-                value=DEFAULT_PROVIDER
+                value=DEFAULT_PROVIDER,
+                allow_custom_value=True
             )
         ],
         outputs=gr.Textbox(label="Stato"),
